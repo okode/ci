@@ -1,0 +1,31 @@
+version: 2
+
+jobs:
+  cli:
+    docker:
+      - image: circleci/node:latest-browsers
+    working_directory: ~/ci
+    steps:
+      - checkout
+      - restore-cache:
+          key: cache-01-npm-{{ arch }}-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - run: git checkout package-lock.json
+      - save-cache:
+          key: cache-01-npm-{{ arch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run build
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - cli:
+          context: org-global
+          filters:
+            branches:
+              ignore:
+                - master
+            tags:
+              ignore: /.*/
