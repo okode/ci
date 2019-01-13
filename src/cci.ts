@@ -36,6 +36,7 @@ export class CCI {
     if (options.command == undefined) options.command = 'help';
 
     switch (options.command) {
+      case 'help': this.help(); break;
       case 'ci': success = new CICommand().run(options._unknown); break;
       default: {
         Logger.error(`Unable to find command: ${options.command}`);

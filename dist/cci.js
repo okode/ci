@@ -34,6 +34,9 @@ class CCI {
         if (options.command == undefined)
             options.command = 'help';
         switch (options.command) {
+            case 'help':
+                this.help();
+                break;
             case 'ci':
                 success = new ci_1.CICommand().run(options._unknown);
                 break;
