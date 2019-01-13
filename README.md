@@ -15,14 +15,6 @@ $ npm run build
 $ bin/cci
 ```
 
-### Publishing
-
-Build project and then run the release script:
-
-```
-$ ./release.sh [CURRENT_VERSION] [NEXT_VERSION]
-```
-
 ### Installing from local folder
 
 Build project and then run the release script:
