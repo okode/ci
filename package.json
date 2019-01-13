@@ -6,7 +6,7 @@
   "author": "Okode",
   "homepage": "https://github.com/okode/ci",
   "bin": {
-    "okode": "./bin/cci"
+    "cci": "./bin/cci"
   },
   "scripts": {
     "build": "rm -rf dist && tsc"
