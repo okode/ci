@@ -13,12 +13,12 @@ class CICommand {
     help() {
         const usage = [
             {
-                header: 'okode ci',
+                header: 'cci ci',
                 content: 'These commands integrate with CI (CircleCI), which brings continuous integration to your app.'
             },
             {
                 header: 'Usage',
-                content: `${chalk_1.default.dim('$')} ${chalk_1.default.green('okode ci <command>')}`
+                content: `${chalk_1.default.dim('$')} ${chalk_1.default.green('cci ci <command>')}`
             },
             {
                 header: 'Command List',

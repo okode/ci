@@ -66,4 +66,12 @@ export class Utils {
     }
   }
 
+  static directoryExists(path: string) {
+    try {
+      return fs.statSync(path).isDirectory();
+    } catch (error) {
+      return false;
+    }
+  }
+
 }

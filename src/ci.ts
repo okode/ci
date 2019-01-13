@@ -11,12 +11,12 @@ export class CICommand implements Command {
   private help() {
     const usage: commandLineUsage.Section[] = [
       {
-        header: 'okode ci',
+        header: 'cci ci',
         content: 'These commands integrate with CI (CircleCI), which brings continuous integration to your app.'
       },
       {
         header: 'Usage',
-        content: `${chalk.dim('$')} ${chalk.green('okode ci <command>')}`
+        content: `${chalk.dim('$')} ${chalk.green('cci ci <command>')}`
       },
       {
         header: 'Command List',
