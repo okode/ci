@@ -4,6 +4,7 @@ import commandLineArgs from 'command-line-args';
 import { Logger } from './logger';
 import { exit } from 'shelljs';
 import { CICommand } from './ci';
+import { CordovaCommand } from './cordova';
 
 export class CCI {
 
@@ -37,7 +38,8 @@ export class CCI {
 
     switch (options.command) {
       case 'help': this.help(); break;
-      case 'ci': success = new CICommand().run(options._unknown); break;
+      case 'ci':      success = new CICommand().run(options._unknown); break;
+      case 'cordova': success = new CordovaCommand().run(options._unknown); break;
       default: {
         Logger.error(`Unable to find command: ${options.command}`);
         this.help();

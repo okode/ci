@@ -9,6 +9,7 @@ const command_line_args_1 = __importDefault(require("command-line-args"));
 const logger_1 = require("./logger");
 const shelljs_1 = require("shelljs");
 const ci_1 = require("./ci");
+const cordova_1 = require("./cordova");
 class CCI {
     help() {
         const usage = [
@@ -39,6 +40,9 @@ class CCI {
                 break;
             case 'ci':
                 success = new ci_1.CICommand().run(options._unknown);
+                break;
+            case 'cordova':
+                success = new cordova_1.CordovaCommand().run(options._unknown);
                 break;
             default:
                 {
