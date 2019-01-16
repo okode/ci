@@ -20,7 +20,8 @@ class CCI {
             {
                 header: 'Command List',
                 content: [
-                    { name: chalk_1.default.green('ci'), summary: 'CI utilities' }
+                    { name: chalk_1.default.green('ci'), summary: 'CI utilities' },
+                    { name: chalk_1.default.green('cordova'), summary: 'Cordova utilities' }
                 ]
             }
         ];

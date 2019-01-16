@@ -17,7 +17,8 @@ export class CCI {
       {
         header: 'Command List',
         content: [
-          { name: chalk.green('ci'), summary: 'CI utilities'}
+          { name: chalk.green('ci'), summary: 'CI utilities'},
+          { name: chalk.green('cordova'), summary: 'Cordova utilities' }
         ]
       }
     ];
