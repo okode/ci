@@ -79,6 +79,8 @@ class CICommand {
                     {
                         utils_1.Utils.exec('sudo npm install --quiet -g ionic');
                         if (nativeBuild) {
+                            utils_1.Utils.exec('yes | sdkmanager --licenses');
+                            utils_1.Utils.exec('sdkmanager "build-tools;28.0.3" "platforms;android-28" "platform-tools" "tools"');
                             utils_1.Utils.exec('sudo npm install --quiet -g cordova');
                             utils_1.Utils.exec('cordova telemetry off');
                             const gradleVersion = '5.0';
