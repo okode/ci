@@ -144,7 +144,8 @@ class CICommand {
                  ${distBuild ? '' : '--development'}                                      \
                  --app_identifier    "${packageName}"                                     \
                  --provisioning_name "${distBuild ? distProvisioning : devProvisioning}"  \
-                 --team_id           "${teamId}"`;
+                 --team_id           "${teamId}"                                          \
+                 --cert_owner_name   "Okode Developers"`;
             utils_1.Utils.exec(cmd);
             return true;
         }
