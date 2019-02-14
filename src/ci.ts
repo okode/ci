@@ -134,7 +134,7 @@ export class CICommand implements Command {
                  --app_identifier    "${packageName}"                                     \
                  --provisioning_name "${distBuild ? distProvisioning : devProvisioning}"  \
                  --team_id           "${teamId}"                                          \
-                 --cert_owner_name   "Okode Developers"`;
+                 ${distBuild ? '' : '--cert_owner_name "Okode Developers"'}`;
       Utils.exec(cmd);
       return true;
     } catch (error) {
