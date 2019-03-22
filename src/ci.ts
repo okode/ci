@@ -60,10 +60,11 @@ export class CICommand implements Command {
       const tag = process.env.CIRCLE_TAG;
       const nativeBuild = tag != undefined;
       const distBuild = nativeBuild && tag!.endsWith('-dist');
+      const cordovaVersion = '8.1.2';
       switch (process.env.CIRCLE_JOB! as 'ios' | 'android') {
         case 'ios': {
           Utils.exec('sudo gem install fastlane');
-          Utils.exec('npm install --quiet -g ionic cordova@8.1.2');
+          Utils.exec(`npm install --quiet -g ionic cordova@${cordovaVersion}`);
           if (nativeBuild) {
             Utils.exec('HOMEBREW_NO_AUTO_UPDATE=1 brew install github-release');
           }
@@ -76,7 +77,7 @@ export class CICommand implements Command {
             Utils.exec('yes | sdkmanager "platforms;android-28"');
             Utils.exec('yes | sdkmanager "platform-tools"');
             Utils.exec('yes | sdkmanager "tools"');
-            Utils.exec('sudo npm install --quiet -g cordova');
+            Utils.exec(`sudo npm install --quiet -g cordova@${cordovaVersion}`);
             Utils.exec('cordova telemetry off');
             const gradleVersion = '5.0';
             Utils.exec(`curl https://downloads.gradle.org/distributions/gradle-${gradleVersion}-bin.zip > /tmp/gradle-${gradleVersion}-bin.zip`);
