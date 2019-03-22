@@ -68,7 +68,7 @@ class CICommand {
                 case 'ios':
                     {
                         utils_1.Utils.exec('sudo gem install fastlane');
-                        utils_1.Utils.exec('npm install --quiet -g ionic cordova');
+                        utils_1.Utils.exec('npm install --quiet -g ionic cordova@8.1.2');
                         if (nativeBuild) {
                             utils_1.Utils.exec('HOMEBREW_NO_AUTO_UPDATE=1 brew install github-release');
                         }

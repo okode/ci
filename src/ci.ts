@@ -63,7 +63,7 @@ export class CICommand implements Command {
       switch (process.env.CIRCLE_JOB! as 'ios' | 'android') {
         case 'ios': {
           Utils.exec('sudo gem install fastlane');
-          Utils.exec('npm install --quiet -g ionic cordova');
+          Utils.exec('npm install --quiet -g ionic cordova@8.1.2');
           if (nativeBuild) {
             Utils.exec('HOMEBREW_NO_AUTO_UPDATE=1 brew install github-release');
           }
