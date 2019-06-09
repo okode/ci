@@ -4,6 +4,7 @@
   "description": "Okode CI",
   "keywords": [],
   "author": "Okode",
+  "license": "MIT",
   "homepage": "https://github.com/okode/ci",
   "bin": {
     "cci": "./bin/cci"
@@ -16,37 +17,37 @@
     "url": "https://github.com/okode/ci.git"
   },
   "dependencies": {
-    "chalk": "^2.4.1",
-    "command-line-args": "^5.0.2",
+    "chalk": "^2.4.2",
+    "command-line-args": "^5.1.1",
     "command-line-usage": "^5.0.5",
-    "inquirer": "^6.2.1",
+    "inquirer": "^6.3.1",
     "shelljs": "^0.8.3",
-    "tmp": "^0.0.33",
-    "fs-extra": "^7.0.1",
-    "table": "^5.1.1",
-    "xml-js": "^1.6.8",
-    "semver": "^5.6.0",
-    "node-emoji": "^1.8.1",
+    "tmp": "^0.1.0",
+    "fs-extra": "^8.0.1",
+    "table": "^5.4.0",
+    "xml-js": "^1.6.11",
+    "semver": "^6.1.1",
+    "node-emoji": "^1.10.0",
     "chai": "^4.2.0",
-    "replace": "^1.0.0",
+    "replace": "^1.1.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "moment": "^2.23.0"
+    "request-promise": "^4.2.4",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
-    "ts-node": "^7.0.1",
-    "@types/node": "^10.12.15",
+    "ts-node": "^8.2.0",
+    "@types/node": "^12.0.7",
     "@types/command-line-args": "^5.0.0",
     "@types/command-line-usage": "^5.0.1",
-    "@types/inquirer": "^0.0.43",
-    "@types/shelljs": "^0.8.1",
-    "@types/tmp": "^0.0.33",
-    "@types/fs-extra": "^5.0.4",
+    "@types/inquirer": "^6.0.3",
+    "@types/shelljs": "^0.8.5",
+    "@types/tmp": "^0.1.0",
+    "@types/fs-extra": "^7.0.0",
     "@types/table": "^4.0.5",
-    "@types/semver": "^5.5.0",
-    "@types/node-emoji": "^1.8.0",
+    "@types/semver": "^6.0.0",
+    "@types/node-emoji": "^1.8.1",
     "@types/chai": "^4.1.7",
-    "@types/request-promise": "^4.1.42",
-    "typescript": "^3.2.2"
+    "@types/request-promise": "^4.1.44",
+    "typescript": "^3.5.1"
   }
 }

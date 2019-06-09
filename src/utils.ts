@@ -37,16 +37,26 @@ export class Utils {
   }
 
   static getProvisioningInfo(type: 'debug' | 'release') {
-    let buildJsonPath = 'build.json';
-    if (!Utils.fileExists(buildJsonPath)) {
-      return undefined;
+    switch (Utils.getAppNativeTechnology()) {
+      case 'cordova':
+        let buildJsonPath = 'build.json';
+        if (!Utils.fileExists(buildJsonPath)) {
+          return undefined;
+        }
+        let buildJson = JSON.parse(fs.readFileSync(buildJsonPath, 'utf8'));
+        let info = buildJson.ios[type];
+        return {
+          provisioninProfile: info.provisioningProfile as string,
+          developmentTeam: info.developmentTeam as string
+        };
+      case 'capacitor':
+        const provisioninProfile = `${Utils.getAppPackageName()} ${type === 'debug' ? 'Development' : 'Distribution'}`;
+        const xcodeprojText = fs.readFileSync('ios/App/App.xcodeproj/project.pbxproj').toString();
+        const developmentTeam = xcodeprojText.match(/DEVELOPMENT_TEAM = (.*);/)![1];
+        return { provisioninProfile, developmentTeam };
+      default:
+        return undefined;
     }
-    let buildJson = JSON.parse(fs.readFileSync(buildJsonPath, 'utf8'));
-    let info = buildJson.ios[type];
-    return {
-      provisioninProfile: info.provisioningProfile as string,
-      developmentTeam: info.developmentTeam as string
-    };
   }
 
   static replaceInFiles(regex: string, replacement: string, path = '.', recursive = true) {

@@ -5,6 +5,7 @@ import { Logger } from './logger';
 import { exit } from 'shelljs';
 import { CICommand } from './ci';
 import { CordovaCommand } from './cordova';
+import { Utils } from './utils';
 
 export class CCI {
 
@@ -44,7 +45,7 @@ export class CCI {
       default: {
         Logger.error(`Unable to find command: ${options.command}`);
         this.help();
-       }; break;
+       } break;
     }
 
     return success;

@@ -50,7 +50,6 @@ class CCI {
                     logger_1.Logger.error(`Unable to find command: ${options.command}`);
                     this.help();
                 }
-                ;
                 break;
         }
         return success;
