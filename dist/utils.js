@@ -14,11 +14,16 @@ const chai_1 = require("chai");
 let replace = require('replace');
 class Utils {
     static getAppPackageName() {
-        if (Utils.getAppNativeTechnology() != 'cordova') {
-            return 'Unknown';
+        switch (Utils.getAppNativeTechnology()) {
+            case 'cordova':
+                const xmlData = fs.readFileSync('config.xml').toString();
+                return JSON.parse(xmljs.xml2json(xmlData, { compact: true })).widget._attributes.id;
+            case 'capacitor':
+                const jsonData = fs.readFileSync('capacitor.config.json').toString();
+                return JSON.parse(jsonData).appId;
+            default:
+                return undefined;
         }
-        const xmlData = fs.readFileSync('config.xml').toString();
-        return JSON.parse(xmljs.xml2json(xmlData, { compact: true })).widget._attributes.id;
     }
     static getAppNativeTechnology() {
         if (fs.existsSync('config.xml')) {

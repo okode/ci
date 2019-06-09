@@ -14,11 +14,16 @@ let replace: (options: {
 export class Utils {
 
   static getAppPackageName() {
-    if (Utils.getAppNativeTechnology() != 'cordova') {
-      return 'Unknown';
+    switch (Utils.getAppNativeTechnology()) {
+      case 'cordova':
+        const xmlData = fs.readFileSync('config.xml').toString();
+        return JSON.parse(xmljs.xml2json(xmlData, { compact: true })).widget._attributes.id as string | undefined;
+      case 'capacitor':
+        const jsonData = fs.readFileSync('capacitor.config.json').toString();
+        return JSON.parse(jsonData).appId as string | undefined;
+      default:
+        return undefined;
     }
-    const xmlData = fs.readFileSync('config.xml').toString();
-    return JSON.parse(xmljs.xml2json(xmlData, { compact: true })).widget._attributes.id as string | undefined;
   }
 
   static getAppNativeTechnology(): 'cordova' | 'capacitor' | 'unknown' {
