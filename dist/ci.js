@@ -134,9 +134,13 @@ class CICommand {
             utils_1.Utils.exec(`security list-keychains -s ${keyChain}`);
             utils_1.Utils.exec(`security default-keychain -s ${keyChain}`);
             utils_1.Utils.exec(`security import ${certDir}/apple-wwdcrca.cer -k ${keyChain} -T /usr/bin/codesign`);
-            utils_1.Utils.exec(`security import ${certDir}/development.cer -k ${keyChain} -A`);
+            if (utils_1.Utils.fileExists(`${certDir}/development.cer`)) {
+                utils_1.Utils.exec(`security import ${certDir}/development.cer -k ${keyChain} -A`);
+            }
             utils_1.Utils.exec(`security import ${certDir}/development.p12 -k ${keyChain} -P ${devPass} -A`);
-            utils_1.Utils.exec(`security import ${certDir}/distribution.cer -k ${keyChain} -A`);
+            if (utils_1.Utils.fileExists(`${certDir}/distribution.cer`)) {
+                utils_1.Utils.exec(`security import ${certDir}/distribution.cer -k ${keyChain} -A`);
+            }
             utils_1.Utils.exec(`security import ${certDir}/distribution.p12 -k ${keyChain} -P ${distPass} -A`);
             utils_1.Utils.exec(`security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k ${keyChainPass} ${keyChain}`);
             let cmd = `LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8                                      \

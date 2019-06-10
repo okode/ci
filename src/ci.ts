@@ -123,9 +123,13 @@ export class CICommand implements Command {
       Utils.exec(`security list-keychains -s ${keyChain}`);
       Utils.exec(`security default-keychain -s ${keyChain}`);
       Utils.exec(`security import ${certDir}/apple-wwdcrca.cer -k ${keyChain} -T /usr/bin/codesign`);
-      Utils.exec(`security import ${certDir}/development.cer -k ${keyChain} -A`);
+      if (Utils.fileExists(`${certDir}/development.cer`)) {
+        Utils.exec(`security import ${certDir}/development.cer -k ${keyChain} -A`);
+      }
       Utils.exec(`security import ${certDir}/development.p12 -k ${keyChain} -P ${devPass} -A`);
-      Utils.exec(`security import ${certDir}/distribution.cer -k ${keyChain} -A`);
+      if (Utils.fileExists(`${certDir}/distribution.cer`)) {
+        Utils.exec(`security import ${certDir}/distribution.cer -k ${keyChain} -A`);
+      }
       Utils.exec(`security import ${certDir}/distribution.p12 -k ${keyChain} -P ${distPass} -A`);
       Utils.exec(`security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k ${keyChainPass} ${keyChain}`);
       let cmd = `LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8                                      \
