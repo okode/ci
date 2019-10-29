@@ -68,7 +68,7 @@ class CICommand {
             switch (process.env.CIRCLE_JOB) {
                 case 'ios':
                     {
-                        utils_1.Utils.exec('chruby 2.5');
+                        utils_1.Utils.exec('source /usr/local/opt/chruby/share/chruby/chruby.sh && chruby 2.5');
                         utils_1.Utils.exec('sudo gem install fastlane');
                         utils_1.Utils.exec(`npm install --quiet -g ionic cordova@${cordovaVersion}`);
                         if (nativeBuild) {
