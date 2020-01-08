@@ -61,9 +61,10 @@ export class CICommand implements Command {
       const nativeBuild = tag != undefined;
       const distBuild = nativeBuild && tag!.endsWith('-dist');
       const cordovaVersion = '8.1.2';
+      const fastlaneVersion = '2.138.0';
       switch (process.env.CIRCLE_JOB! as 'ios' | 'android') {
         case 'ios': {
-          Utils.exec('sudo gem install fastlane');
+          Utils.exec(`sudo gem install fastlane -v ${fastlaneVersion}`);
           Utils.exec(`npm install --quiet -g ionic cordova@${cordovaVersion}`);
           if (nativeBuild) {
             Utils.exec('HOMEBREW_NO_AUTO_UPDATE=1 brew install github-release');
