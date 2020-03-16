@@ -71,7 +71,7 @@ export class CICommand implements Command {
           }
         }; break;
         case 'android': {
-          Utils.exec('sudo npm install --quiet -g ionic');
+          Utils.exec('sudo npm install --quiet -g ionic firebase-tools');
           if (nativeBuild) {
             Utils.exec('yes | sdkmanager --licenses');
             Utils.exec('yes | sdkmanager "build-tools;28.0.3"');

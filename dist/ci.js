@@ -79,7 +79,7 @@ class CICommand {
                     break;
                 case 'android':
                     {
-                        utils_1.Utils.exec('sudo npm install --quiet -g ionic');
+                        utils_1.Utils.exec('sudo npm install --quiet -g ionic firebase-tools');
                         if (nativeBuild) {
                             utils_1.Utils.exec('yes | sdkmanager --licenses');
                             utils_1.Utils.exec('yes | sdkmanager "build-tools;28.0.3"');
