@@ -65,13 +65,13 @@ export class CICommand implements Command {
       switch (process.env.CIRCLE_JOB! as 'ios' | 'android') {
         case 'ios': {
           Utils.exec(`sudo gem install fastlane -v ${fastlaneVersion}`);
-          Utils.exec(`npm install --quiet -g ionic firebase-tools cordova@${cordovaVersion}`);
+          Utils.exec(`npm install --quiet -g @ionic/cli firebase-tools cordova@${cordovaVersion}`);
           if (nativeBuild) {
             Utils.exec('HOMEBREW_NO_AUTO_UPDATE=1 brew install github-release');
           }
         }; break;
         case 'android': {
-          Utils.exec('sudo npm install --quiet -g ionic firebase-tools');
+          Utils.exec('sudo npm install --quiet -g @ionic/cli firebase-tools');
           if (nativeBuild) {
             Utils.exec('yes | sdkmanager --licenses');
             Utils.exec('yes | sdkmanager "build-tools;28.0.3"');

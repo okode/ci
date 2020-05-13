@@ -70,7 +70,7 @@ class CICommand {
                 case 'ios':
                     {
                         utils_1.Utils.exec(`sudo gem install fastlane -v ${fastlaneVersion}`);
-                        utils_1.Utils.exec(`npm install --quiet -g ionic firebase-tools cordova@${cordovaVersion}`);
+                        utils_1.Utils.exec(`npm install --quiet -g @ionic/cli firebase-tools cordova@${cordovaVersion}`);
                         if (nativeBuild) {
                             utils_1.Utils.exec('HOMEBREW_NO_AUTO_UPDATE=1 brew install github-release');
                         }
@@ -79,7 +79,7 @@ class CICommand {
                     break;
                 case 'android':
                     {
-                        utils_1.Utils.exec('sudo npm install --quiet -g ionic firebase-tools');
+                        utils_1.Utils.exec('sudo npm install --quiet -g @ionic/cli firebase-tools');
                         if (nativeBuild) {
                             utils_1.Utils.exec('yes | sdkmanager --licenses');
                             utils_1.Utils.exec('yes | sdkmanager "build-tools;28.0.3"');
